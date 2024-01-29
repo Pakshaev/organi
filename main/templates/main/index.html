@@ -1,0 +1,356 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Ogani Template" />
+    <meta name="keywords" content="Ogani, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ogani</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet" />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/font-awesome.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/elegant-icons.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/nice-select.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/jquery-ui.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/owl.carousel.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/slicknav.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}" type="text/css" />
+  </head>
+
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header" style="margin-bottom: 50px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="header__logo">
+              <a href="{% url 'index' %}"><img src="{% static 'main/img/logo.png' %}" alt="" /></a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <nav class="header__menu">
+              <ul>
+                <li class="active">
+                  <a href="{% url 'index' %}">Home</a>
+                </li>
+                <li>
+                  <a href="{% url 'catalog' %}">Shop</a>
+                </li>
+                <li>
+                  <a href="{% url 'contact' %}">Contact</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          {% if user.is_authenticated %}
+            <div class="login-row">
+              <a href="http://127.0.0.1:8000/admin"><i class="fa fa-user"></i> {{ user.username }}</a>
+            </div>
+          {% else %}
+            <div class="login-row">
+              <a href="http://127.0.0.1:8000/admin"><i class="fa fa-user"></i> Login</a>
+            </div>
+          {% endif %}
+        </div>
+        <div class="humberger__open">
+          <i class="fa fa-bars"></i>
+        </div>
+      </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Categories Section Begin -->
+    <section class="categories">
+      <div class="container">
+        <div class="row">
+          <div class="categories__slider owl-carousel">
+            <div class="col-lg-3">
+              <div class="categories__item set-bg" data-setbg="{% static 'main/img/categories/cat-1.jpg' %}">
+                <h5><a href="#">Fresh Fruit</a></h5>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="categories__item set-bg" data-setbg="{% static 'main/img/categories/cat-2.jpg' %}">
+                <h5><a href="#">Dried Fruit</a></h5>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="categories__item set-bg" data-setbg="{% static 'main/img/categories/cat-3.jpg' %}">
+                <h5><a href="#">Vegetables</a></h5>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="categories__item set-bg" data-setbg="{% static 'main/img/categories/cat-4.jpg' %}">
+                <h5><a href="#">Drink fruits</a></h5>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="categories__item set-bg" data-setbg="{% static 'main/img/categories/cat-5.jpg' %}">
+                <h5><a href="#">Fresh Meat</a></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Categories Section End -->
+
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-title">
+              <h2 id="feature-product">Popular Product</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row featured__filter">
+          <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="{% static 'main/img/featured/feature-1.jpg' %}"></div>
+              <div class="featured__item__text">
+                <h6><a href="#">Beef</a></h6>
+                <h5>$35.00</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="{% static 'main/img/featured/feature-2.jpg' %}"></div>
+              <div class="featured__item__text">
+                <h6><a href="#">Banana</a></h6>
+                <h5>$8.00</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="{% static 'main/img/featured/feature-3.jpg' %}"></div>
+              <div class="featured__item__text">
+                <h6><a href="#">Papaya</a></h6>
+                <h5>$12.00</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="{% static 'main/img/featured/feature-4.jpg' %}"></div>
+              <div class="featured__item__text">
+                <h6><a href="#">Watermelon</a></h6>
+                <h5>$7.00</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="{% static 'main/img/featured/feature-5.jpg' %}"></div>
+              <div class="featured__item__text">
+                <h6><a href="#">Grape</a></h6>
+                <h5>$12.00</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="{% static 'main/img/featured/feature-6.jpg' %}"></div>
+              <div class="featured__item__text">
+                <h6><a href="#">Burger</a></h6>
+                <h5>$22.00</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="{% static 'main/img/featured/feature-7.jpg' %}"></div>
+              <div class="featured__item__text">
+                <h6><a href="#">Mango</a></h6>
+                <h5>$10.00</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="{% static 'main/img/featured/feature-8.jpg' %}"></div>
+              <div class="featured__item__text">
+                <h6><a href="#">Red Apple</a></h6>
+                <h5>$4.00</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Featured Section End -->
+
+    <!-- Blog Section Begin -->
+    <section class="from-blog spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-title from-blog__title">
+              <h2>From The Blog</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="blog__item">
+              <div class="blog__item__pic">
+                <img src="{% static 'main/img/blog/blog-1.jpg' %}" alt="" />
+              </div>
+              <div class="blog__item__text">
+                <ul>
+                  <li>
+                    <i class="fa fa-calendar-o"></i> May 4,2019
+                  </li>
+                  <li>
+                    <i class="fa fa-comment-o"></i> 5
+                  </li>
+                </ul>
+                <h5><a href="https://www.johnsoulesfoods.com/blog/cooking-tips-for-beginners/">Cooking tips make cooking simple</a></h5>
+                <p>Cooking as a beginner doesn’t have to be stressful. With the right tips and practices, you can easily make delicious meals for the whole family to enjoy. Browse the nine tips and tricks below to help you in the kitchen!</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="blog__item">
+              <div class="blog__item__pic">
+                <img src="{% static 'main/img/blog/blog-2.jpg' %}" alt="" />
+              </div>
+              <div class="blog__item__text">
+                <ul>
+                  <li>
+                    <i class="fa fa-calendar-o"></i> April 9,2021
+                  </li>
+                  <li>
+                    <i class="fa fa-comment-o"></i> 11
+                  </li>
+                </ul>
+                <h5><a href="https://www.myrecipes.com/extracrispy/25-quick-breakfast-recipes-to-make-in-30-minutes-or-less">6 ways to prepare breakfast for 30</a></h5>
+                <p>There's something delightful about spending hours at weekend brunch, ruminating over a perfectly prepared platter of poached eggs. But most of the time, taking hours to prepare breakfast is a luxury that you can't afford. During the week, you need to make breakfast in 30 minutes or less, a meal squeezed between the time you wake up and when you rush out the door.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="blog__item">
+              <div class="blog__item__pic">
+                <img src="{% static 'main/img/blog/blog-3.jpg' %}" alt="" />
+              </div>
+              <div class="blog__item__text">
+                <ul>
+                  <li>
+                    <i class="fa fa-calendar-o"></i> Nov 21,2023
+                  </li>
+                  <li>
+                    <i class="fa fa-comment-o"></i> 7
+                  </li>
+                </ul>
+                <h5><a href="https://www.ans.iastate.edu/farms/visiting-farm">Visit the clean farm in the US</a></h5>
+                <p>As part of Iowa State University, the farms are intended to be an educational resource for students and the community. In order to ensure the safety of visitors, farm staff, and animals, tours of the farms are available through prior appointment only. We require tours to be scheduled 1 week in advance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Blog Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer__about">
+              <div class="footer__about__logo">
+                <a href="./index.html"><img src="{% static 'main/img/logo.png' %}" alt="" /></a>
+              </div>
+              <ul>
+                <li>Address: Moskovskoye, 77 Samara</li>
+                <li>Phone: +7 (937)-035-93-72</li>
+                <li>Email: support@pguti.com</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+            <div class="footer__widget">
+              <h6>Useful Links</h6>
+              <ul>
+                <li>
+                  <a href="#">About Us</a>
+                </li>
+                <li>
+                  <a href="#">About Our Shop</a>
+                </li>
+                <li>
+                  <a href="#">Secure Shopping</a>
+                </li>
+                <li>
+                  <a href="#">Delivery infomation</a>
+                </li>
+                <li>
+                  <a href="#">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="#">Our Sitemap</a>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <a href="#">Who We Are</a>
+                </li>
+                <li>
+                  <a href="#">Our Services</a>
+                </li>
+                <li>
+                  <a href="#">Projects</a>
+                </li>
+                <li>
+                  <a href="#">Contact</a>
+                </li>
+                <li>
+                  <a href="#">Innovation</a>
+                </li>
+                <li>
+                  <a href="#">Testimonials</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12">
+            <div class="footer__widget">
+              <h6>Join Our Newsletter Now</h6>
+              <p>Get E-mail updates about our latest shop and special offers.</p>
+              <form action="#">
+                <input type="text" placeholder="Enter your mail" />
+                <button type="submit" class="site-btn">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'main/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'main/js/mixitup.min.js' %}"></script>
+    <script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'main/js/main.js' %}"></script>
+  </body>
+</html>

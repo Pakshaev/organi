@@ -1,0 +1,428 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Ogani Template" />
+    <meta name="keywords" content="Ogani, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Catalog</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet" />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/font-awesome.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/elegant-icons.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/nice-select.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/jquery-ui.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/owl.carousel.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/slicknav.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}" type="text/css" />
+  </head>
+
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header" style="margin-bottom: 50px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="header__logo">
+              <a href="{% url 'index' %}"><img src="{% static 'main/img/logo.png' %}" alt="" /></a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <nav class="header__menu">
+              <ul>
+                <li>
+                  <a href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="active">
+                  <a href="{% url 'catalog' %}">Shop</a>
+                </li>
+                <li>
+                  <a href="{% url 'contact' %}">Contact</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          {% if user.is_authenticated %}
+            <div class="login-row">
+              <a href="http://127.0.0.1:8000/admin"><i class="fa fa-user"></i> {{ user.username }}</a>
+            </div>
+          {% else %}
+            <div class="login-row">
+              <a href="http://127.0.0.1:8000/admin"><i class="fa fa-user"></i> Login</a>
+            </div>
+          {% endif %}
+        </div>
+        <div class="humberger__open">
+          <i class="fa fa-bars"></i>
+        </div>
+      </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="hero__categories">
+              <div class="hero__categories__all">
+                <i class="fa fa-bars"></i>
+                <span>All departments</span>
+              </div>
+              <ul>
+                <li>
+                  <a href="?department=Fresh+Meat">Fresh Meat</a>
+                </li>
+                <li>
+                  <a href="{% url 'catalog' %}?department=Vegetables">Vegetables</a>
+                </li>
+                <li>
+                  <a href="{% url 'catalog' %}?department=Fruit+%26+Nut+Gifts">Fruit & Nut Gifts</a>
+                </li>
+                <li>
+                  <a href="{% url 'catalog' %}?department=Fresh+Berries">Fresh Berries</a>
+                </li>
+                <li>
+                  <a href="{% url 'catalog' %}?department=Ocean+Foods">Ocean Foods</a>
+                </li>
+                <li>
+                  <a href="{% url 'catalog' %}?department=Butter+%26+Eggs">Butter & Eggs</a>
+                </li>
+                <li>
+                  <a href="{% url 'catalog' %}?department=Fastfood">Fastfood</a>
+                </li>
+                <li>
+                  <a href="{% url 'catalog' %}?department=Fresh+Onion">Fresh Onion</a>
+                </li>
+                <li>
+                  <a href="{% url 'catalog' %}?department=Papayaya+%26+Crisps">Papayaya & Crisps</a>
+                </li>
+                <li>
+                  <a href="{% url 'catalog' %}?department=Oatmeal">Oatmeal</a>
+                </li>
+                <li>
+                  <a href="{% url 'catalog' %}?department=Fresh+Bananas">Fresh Bananas</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="hero__search">
+              <div class="hero__search__form">
+                <form action="{% url 'catalog' %}" method="get">
+                  <input type="text" placeholder="What do you need?" name="q" />
+                  <button type="submit" class="site-btn">SEARCH</button>
+                </form>
+              </div>
+              <div class="hero__search__phone">
+                <div class="hero__search__phone__icon">
+                  <i class="fa fa-phone"></i>
+                </div>
+                <div class="hero__search__phone__text">
+                  <h5>+7 (937)-035-93-72</h5>
+                  <span>support 24/7 time</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'main/img/breadcrumb.jpg' %}">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="breadcrumb__text">
+              <h2>Organi Shop</h2>
+              <div class="breadcrumb__option">
+                <a href="./index.html">Home</a>
+                <span>Shop</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-5">
+            <div class="sidebar">
+              <div class="sidebar__item">
+                <h4>Department</h4>
+                <ul>
+                  <li>
+                    <a href="?department=Fresh+Meat">Fresh Meat</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'catalog' %}?department=Vegetables">Vegetables</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'catalog' %}?department=Fruit+%26+Nut+Gifts">Fruit & Nut Gifts</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'catalog' %}?department=Fresh+Berries">Fresh Berries</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'catalog' %}?department=Ocean+Foods">Ocean Foods</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'catalog' %}?department=Butter+%26+Eggs">Butter & Eggs</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'catalog' %}?department=Fastfood">Fastfood</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'catalog' %}?department=Fresh+Onion">Fresh Onion</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'catalog' %}?department=Papayaya+%26+Crisps">Papayaya & Crisps</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'catalog' %}?department=Oatmeal">Oatmeal</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'catalog' %}?department=Fresh+Bananas">Fresh Bananas</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="sidebar__item sidebar__item__color--option">
+                <h4>Colors</h4>
+                <ul></ul>
+                <div class="sidebar__item__color sidebar__item__color--white">
+                  <label for="white"><a href="?color=white">White</a><input type="radio" id="white" /></label>
+                </div>
+                <div class="sidebar__item__color sidebar__item__color--gray">
+                  <label for="gray"><a href="?color=yellow">Yellow</a><input type="radio" id="yellow" /></label>
+                </div>
+                <div class="sidebar__item__color sidebar__item__color--red">
+                  <label for="red"><a href="?color=red">Red</a><input type="radio" id="red" /></label>
+                </div>
+                <div class="sidebar__item__color sidebar__item__color--black">
+                  <label for="black"><a href="?color=black">Black</a><input type="radio" id="black" /></label>
+                </div>
+                <div class="sidebar__item__color sidebar__item__color--blue">
+                  <label for="blue"><a href="?color=blue">Blue</a><input type="radio" id="blue" /></label>
+                </div>
+                <div class="sidebar__item__color sidebar__item__color--green">
+                  <label for="green"><a href="?color=green">Green</a><input type="radio" id="green" /></label>
+                </div>
+              </div>
+
+              <div class="sidebar__item">
+                <h4>Popular Size</h4>
+                <ul>
+                  <li>
+                    <a href="?size=large">Large</a>
+                  </li>
+                  <li>
+                    <a href="?size=medium">Medium</a>
+                  </li>
+                  <li>
+                    <a href="?size=small">Small</a>
+                  </li>
+                  <li>
+                    <a href="?size=tiny">Tiny</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-7">
+            <div class="product__discount">
+              <div class="section-title product__discount__title">
+                <h2>Sale Off</h2>
+              </div>
+              <div class="row">
+                <div class="product__discount__slider owl-carousel">
+                  {% if products %}
+                    {% for el in products %}
+                      {% if el.discount %}
+                        <div class="col-lg-4">
+                          <div class="product__discount__item">
+                            <div class="product__discount__item__pic set-bg" data-setbg="{{ el.image.url }}">
+                              <div class="product__discount__percent">-{{ el.discount }}%</div>
+                              <ul class="product__item__pic__hover">
+                                <li>
+                                  <a href="{% url 'shop-details' el.id %}"><i class="fa fa-retweet"></i></a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="product__discount__item__text">
+                              <span>{{ el.department }}</span>
+                              <h5><a href="#">{{ el.name }}</a></h5>
+                              <div class="product__item__price">
+                                ${% if el.discount %}
+                                  {{ el.discounted_price|floatformat:2 }} <span>${{ el.price|floatformat:2 }}</span>
+                                {% endif %}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  {% else %}
+                    <p class="col-12 text-center">Скидок нет</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="filter__item">
+              <div class="row">
+                <div class="col-lg-4 col-md-5">
+                  <div class="filter__sort">
+                    <span>Sort By Price</span>
+                    <form method="get" action="{% url 'sort_price' %}">
+                      <select name="sort_price">
+                        <option value="low">Low</option>
+                        <option value="high">High</option>
+                      </select>
+                      <button type="submit">Sort</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                  <div class="filter__found">
+                    <h6><span>{{ products|length }}</span> Products found</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              {% if products %}
+                {% for el in products %}
+                  <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="product__item">
+                      <div class="product__item__pic set-bg" data-setbg="{{ el.image.url }}">
+                        <ul class="product__item__pic__hover">
+                          <li>
+                            <a href="{% url 'shop-details' el.id %}"><i class="fa fa-retweet"></i></a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="product__item__text">
+                        <h6><a href="{% url 'shop-details' el.id %}">{{ el.name }}</a></h6>
+                        {% if el.discount %}
+                          <h5>${{ el.discounted_price|floatformat:2 }}</h5>
+                        {% else %}
+                          <h5>${{ el.price|floatformat:2 }}</h5>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% else %}
+                <p class="col-12 text-center">Продуктов нет</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Product Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer__about">
+              <div class="footer__about__logo">
+                <a href="./index.html"><img src="{% static 'main/img/logo.png' %}" alt="" /></a>
+              </div>
+              <ul>
+                <li>Address: Moskovskoye, 77 Samara</li>
+                <li>Phone: +7 (937)-035-93-72</li>
+                <li>Email: support@pguti.com</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+            <div class="footer__widget">
+              <h6>Useful Links</h6>
+              <ul>
+                <li>
+                  <a href="#">About Us</a>
+                </li>
+                <li>
+                  <a href="#">About Our Shop</a>
+                </li>
+                <li>
+                  <a href="#">Secure Shopping</a>
+                </li>
+                <li>
+                  <a href="#">Delivery infomation</a>
+                </li>
+                <li>
+                  <a href="#">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="#">Our Sitemap</a>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <a href="#">Who We Are</a>
+                </li>
+                <li>
+                  <a href="#">Our Services</a>
+                </li>
+                <li>
+                  <a href="#">Projects</a>
+                </li>
+                <li>
+                  <a href="#">Contact</a>
+                </li>
+                <li>
+                  <a href="#">Innovation</a>
+                </li>
+                <li>
+                  <a href="#">Testimonials</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12">
+            <div class="footer__widget">
+              <h6>Join Our Newsletter Now</h6>
+              <p>Get E-mail updates about our latest shop and special offers.</p>
+              <form action="#">
+                <input type="text" placeholder="Enter your mail" />
+                <button type="submit" class="site-btn">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'main/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'main/js/mixitup.min.js' %}"></script>
+    <script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'main/js/main.js' %}"></script>
+  </body>
+</html>
